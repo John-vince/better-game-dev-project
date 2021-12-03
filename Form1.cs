@@ -42,18 +42,26 @@ namespace better_game_dev_project
             return y;
         }
 
-        public void Constructor()
+        public void tile_Constructor()
         {
 
         }
 
-        public void Constructor(int _x, int _y)
+        public void tile_Constructor(int _x, int _y)
         { 
-            
-            x = _x; y = _y; 
+            x = _x; 
+            y = _y; 
         
         }
 
+    }
+
+    class Obstacle : tile
+    {
+        public void Constructor(int _x, int _y)
+        {
+            this.tile_Constructor(_x, _y);
+        }
     }
     class Character : tile //true base class for Hero and Goblin classes.
     {
