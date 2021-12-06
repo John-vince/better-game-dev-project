@@ -172,12 +172,12 @@ namespace better_game_dev_project
         }
         public Movement ReturnMove(Movement move = 0)
         {
-            int _hold;
+            // break is unreachable so i removed it by commenting it out. i left the breaks as comments so I could more easily read the code
             switch (move)
             {
                 case Movement.No_movement:
                         return Movement.No_movement;
-                    break;
+                    //break;
                 case Movement.Up:
                     if (this.Tile[1] != "X")
                     {
@@ -185,7 +185,7 @@ namespace better_game_dev_project
                     }
                     else
                         return Movement.No_movement;
-                    break;
+                   // break;
                 case Movement.Down:
                     if (this.Tile[2] != "X")
                     {
@@ -193,7 +193,7 @@ namespace better_game_dev_project
                     }
                     else
                         return Movement.No_movement;
-                    break;
+                   // break;
                 case Movement.Left:
                     if (this.Tile[3] != "X")
                     {
@@ -201,7 +201,7 @@ namespace better_game_dev_project
                     }
                     else
                         return Movement.No_movement;
-                    break;
+                   // break;
                 case Movement.Right:
                     if (this.Tile[4] != "X")
                     {
@@ -209,10 +209,10 @@ namespace better_game_dev_project
                     }
                     else
                         return Movement.No_movement;
-                    break;
+                   // break;
                 default:
                     return Movement.No_movement;
-                    break;
+                  //  break;
 
             }
         }
