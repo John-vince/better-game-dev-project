@@ -114,7 +114,7 @@ namespace better_game_dev_project
             else
                 return false;
         }
-        public virtual bool CheckRange(string target, int x, int y)
+        public virtual bool CheckRange(string target, int x, int y) // todistance's function is intergrated with check range because I am not making that converlooted function work at this time
         {
             if (this.name == target)
             {
