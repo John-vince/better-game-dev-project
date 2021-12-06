@@ -229,13 +229,13 @@ namespace better_game_dev_project
     }
     class Enemy : Character //contains a single protected member variable that is used internally by subclasses
     {
-        Random random = new Random();
+       public Random random = new Random();
          public void Constructor_Enermy(int x, int y, int attack, int HP)
          {
             this.Constructor_Character(x, y,attack,HP);
          }
 
-        public string _Tostring(string name, int x, int y, int damage)
+        public string _Tostring(string name, int x, int y, int damage) //not the "tostring override" thing wanted but it should work
         {
             return name + " at [" + x + ", " + y + "] (" + damage + ")";
         }
@@ -244,7 +244,21 @@ namespace better_game_dev_project
 
     class Goblin : Enemy
     {
-
+        public void Construtor_Goblin(int x, int y)
+        {
+            this.Constructor_Enermy(x, y, 1, 10);
+        }
+        /*static Random _R = new Random();
+        static T RandomEnumValue<T>()
+        {
+            var v = Enum.GetValues(typeof(T));
+            return (T)v.GetValue(_R.Next(v.Length));
+        }*/ // just a reference for me to get the method bellow working
+        public Movement ReturnMove(Movement move = 0)
+        {
+            var v = Enum.GetValues(typeof(Movement));
+            return (Movement)v.GetValue(random.Next(v.Length));
+        }
     }
     class Hero : Character
     {
