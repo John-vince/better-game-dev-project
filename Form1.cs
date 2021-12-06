@@ -418,7 +418,11 @@ namespace better_game_dev_project
     }
     class  GameEngine
     {
-
+        Map map = new Map();
+        public void Constructor_GameEngine(int _min_width, int _max_width, int _min_height, int _max_height, int _enermy_amount)
+        {
+            map.Map_constructor(_min_width, _max_width, _min_height, _max_height, _enermy_amount);
+        }
     }
         
     
