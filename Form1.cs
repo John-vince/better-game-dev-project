@@ -91,7 +91,7 @@ namespace better_game_dev_project
         {
             return Damage;
         }
-       public string[] Tile;
+       public string[] Tile = new string[4];
 
         public enum Movement
         {
@@ -387,6 +387,30 @@ namespace better_game_dev_project
 
        private void UpdateVision()
         {
+            int _X,_Y;
+            _X = _hero.Get_x();
+            _Y = _hero.Get_y();
+            
+            _hero.Tile[1] = Convert.ToString(Tile[_X +1 , _Y]);
+            _hero.Tile[2] = Convert.ToString(Tile[_X -1, _Y]);
+            _hero.Tile[3] = Convert.ToString(Tile[_X, _Y +1]);
+            _hero.Tile[4] = Convert.ToString(Tile[_X, _Y -1]);
+
+            for (int i = 0; i < enermy_array.Length; i++)
+            {
+               /* int _X, _Y;
+                _X = random.Next(_x_max - 1);
+                _Y = random.Next(_y_max - 1);
+                _enemy.Constructor_Enermy(_X, _Y, 5, 10); // I could add checks so they don't end up on the same space... buuut I couldn't be bothered currently :/
+                enermy_array[i] = _enemy;
+                Tile[_X, _Y] = 'G';*/
+               enermy_array[i].Tile[1] = Convert.ToString(Tile[_X + 1, _Y]);
+               enermy_array[i].Tile[2] = Convert.ToString(Tile[_X - 1, _Y]);
+               enermy_array[i].Tile[3] = Convert.ToString(Tile[_X, _Y + 1]);
+               enermy_array[i].Tile[4] = Convert.ToString(Tile[_X, _Y - 1]);
+
+            }
+
 
         }
 
