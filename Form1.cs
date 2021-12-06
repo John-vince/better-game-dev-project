@@ -99,6 +99,14 @@ namespace better_game_dev_project
         {
             this.tile_Constructor(x, y);
         }
+        public void Constructor_Character(int x, int y, int _attack, int _HP)
+        {
+            this.tile_Constructor(x, y);
+            HP = _HP;
+            Max_hp = _HP;
+            Damage = _attack;
+
+        }
         public virtual void Attack(string target, int damage)
         {
             // some code must go in here that can target a perticular enermy or player but character doesn't have that type of idenitfier in the instructions so far, so I'll just make one for now
@@ -216,10 +224,22 @@ namespace better_game_dev_project
 
             }
         }
+
+        // the tostring thing is ment to be here but I have no idea what that thing does or how to set it up.
     }
     class Enemy : Character //contains a single protected member variable that is used internally by subclasses
     {
+        Random random = new Random();
+         public void Constructor_Enermy(int x, int y, int attack, int HP)
+         {
+            this.Constructor_Character(x, y,attack,HP);
+         }
 
+        public string _Tostring(string name, int x, int y, int damage)
+        {
+            return name + " at [" + x + ", " + y + "] (" + damage + ")";
+        }
+        
     }
 
     class Goblin : Enemy
