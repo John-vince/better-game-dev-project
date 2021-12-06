@@ -137,6 +137,77 @@ namespace better_game_dev_project
             }
         }
 
+        public void Move(int move = 0)
+        {
+            int _hold;
+            switch (move)
+            {
+                case 0:
+
+                    break;
+                case 1:
+                    _hold = this.Get_y();
+                    _hold = _hold + 1;
+                    this.Constructor_Character(this.Get_x(), _hold);
+                    break;
+                case 2:
+                    _hold = this.Get_y();
+                    _hold = _hold - 1;
+                    this.Constructor_Character(this.Get_x(), _hold);
+                    break;
+                case 3:
+                    _hold = this.Get_x();
+                    _hold = _hold + 1;
+                    this.Constructor_Character(_hold, this.Get_y());
+                    break;
+                case 4:
+                    _hold = this.Get_x();
+                    _hold = _hold - 1;
+                    this.Constructor_Character(_hold, this.Get_y());
+                    break;
+                default:
+
+                    break;
+            }
+        }
+        public Movement ReturnMove(int move = 0)
+        {
+            int _hold;
+            switch (move)
+            {
+                case 0:
+                    return Movement.No_movement;
+                    break;
+                case 1:
+                    if (this.Tile[1] != "X")
+                    {
+                        return Movement.Up;
+                    }
+                    break;
+                case 2:
+                    if (this.Tile[2] != "X")
+                    {
+                        return Movement.Down;
+                    }
+                    break;
+                case 3:
+                    if (this.Tile[3] != "X")
+                    {
+                        return Movement.Left;
+                    }
+                    break;
+                case 4:
+                    if (this.Tile[4] != "X")
+                    {
+                        return Movement.Right;
+                    }
+                    break;
+                default:
+                    return Movement.No_movement;
+                    break;
+
+            }
+        }
     }
     class Enemy : Character //contains a single protected member variable that is used internally by subclasses
     {
