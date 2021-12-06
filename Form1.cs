@@ -74,6 +74,7 @@ namespace better_game_dev_project
     }
     class Character : tile //true base class for Hero and Goblin classes.
     {
+        string name;
         int HP, Max_hp, Damage;
         public int Get_HP()
         { return HP; }
@@ -98,7 +99,14 @@ namespace better_game_dev_project
         {
             this.tile_Constructor(x, y);
         }
-
+        public virtual void Attack(string target, int damage)
+        {
+            // some code must go in here that can target a perticular enermy or player but character doesn't have that type of idenitfier in the instructions so far, so I'll just make one for now
+            if (this.name == target) // pretty sure this won't work :/
+            {
+                HP = HP - damage;
+            }
+        }
 
     }
     class Enemy : Character //contains a single protected member variable that is used internally by subclasses
