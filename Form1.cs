@@ -170,37 +170,45 @@ namespace better_game_dev_project
                     break;
             }
         }
-        public Movement ReturnMove(int move = 0)
+        public Movement ReturnMove(Movement move = 0)
         {
             int _hold;
             switch (move)
             {
-                case 0:
-                    return Movement.No_movement;
+                case Movement.No_movement:
+                        return Movement.No_movement;
                     break;
-                case 1:
+                case Movement.Up:
                     if (this.Tile[1] != "X")
                     {
                         return Movement.Up;
                     }
+                    else
+                        return Movement.No_movement;
                     break;
-                case 2:
+                case Movement.Down:
                     if (this.Tile[2] != "X")
                     {
                         return Movement.Down;
                     }
+                    else
+                        return Movement.No_movement;
                     break;
-                case 3:
+                case Movement.Left:
                     if (this.Tile[3] != "X")
                     {
                         return Movement.Left;
                     }
+                    else
+                        return Movement.No_movement;
                     break;
-                case 4:
+                case Movement.Right:
                     if (this.Tile[4] != "X")
                     {
                         return Movement.Right;
                     }
+                    else
+                        return Movement.No_movement;
                     break;
                 default:
                     return Movement.No_movement;
