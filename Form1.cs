@@ -345,8 +345,12 @@ namespace better_game_dev_project
             enermy_array = new Enemy[_enermy_amount];
             for (int i = 0; i < enermy_array.Length; i++)
             {
-              _enemy.Constructor_Enermy(_x_max, _y_max, 5, 10);
+                int _X, _Y;
+                _X = random.Next(_x_max - 1);
+                _Y = random.Next(_y_max - 1);
+              _enemy.Constructor_Enermy(_X, _Y, 5, 10); // I could add checks so they don't end up on the same space... buuut I couldn't be bothered currently :/
                 enermy_array[i] = _enemy;
+                Tile[_X, _Y] = 'G';
             }
             _start_map();
         }
@@ -378,6 +382,11 @@ namespace better_game_dev_project
             }
             // create the start position
             Tile[1, 1] = 'H';
+
+        }
+
+       private void UpdateVision()
+        {
 
         }
 
