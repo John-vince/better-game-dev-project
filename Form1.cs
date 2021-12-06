@@ -34,7 +34,7 @@ namespace better_game_dev_project
     {
         // our vars for tile
         int x, y;
-       public enum TileType // our enums to dertermin the tile type.
+        public enum TileType // our enums to dertermin the tile type.
         {
             Hero,
             Enemy,
@@ -56,10 +56,10 @@ namespace better_game_dev_project
         }
 
         public void tile_Constructor(int _x, int _y) // the true constructor that brings this object into being.
-        { 
-            x = _x; 
-            y = _y; 
-        
+        {
+            x = _x;
+            y = _y;
+
         }
 
     }
@@ -74,9 +74,9 @@ namespace better_game_dev_project
 
     class emptytile : tile
     {
-        public void emptytile_constructor(int _x,int _y) // just adds an empty space
+        public void emptytile_constructor(int _x, int _y) // just adds an empty space
         {
-            this.tile_Constructor(_x,_y);
+            this.tile_Constructor(_x, _y);
         }
     }
     class Character : tile //true base class for Hero and Goblin classes.
@@ -86,12 +86,12 @@ namespace better_game_dev_project
         public int Get_HP()
         { return HP; }
         public int Get_Max_Hp()
-            { return Max_hp; }
+        { return Max_hp; }
         public int Get_Damage()
         {
             return Damage;
         }
-       public string[] Tile = new string[4];
+        public string[] Tile = new string[4];
 
         public enum Movement
         {
@@ -133,14 +133,14 @@ namespace better_game_dev_project
         {
             if (this.name == target)
             {
-               if ((this.Get_x() - x) < 2)
+                if ((this.Get_x() - x) < 2)
                 {
                     if (this.Get_y() - y < 2)
                     { return true; }
                     else
                     { return false; }
                 }
-               else
+                else
                 {
                     return false;
                 }
@@ -191,8 +191,8 @@ namespace better_game_dev_project
             switch (move)
             {
                 case Movement.No_movement:
-                        return Movement.No_movement;
-                    //break;
+                    return Movement.No_movement;
+                //break;
                 case Movement.Up:
                     if (this.Tile[1] != "X")
                     {
@@ -200,7 +200,7 @@ namespace better_game_dev_project
                     }
                     else
                         return Movement.No_movement;
-                   // break;
+                // break;
                 case Movement.Down:
                     if (this.Tile[2] != "X")
                     {
@@ -208,7 +208,7 @@ namespace better_game_dev_project
                     }
                     else
                         return Movement.No_movement;
-                   // break;
+                // break;
                 case Movement.Left:
                     if (this.Tile[3] != "X")
                     {
@@ -216,7 +216,7 @@ namespace better_game_dev_project
                     }
                     else
                         return Movement.No_movement;
-                   // break;
+                // break;
                 case Movement.Right:
                     if (this.Tile[4] != "X")
                     {
@@ -224,10 +224,10 @@ namespace better_game_dev_project
                     }
                     else
                         return Movement.No_movement;
-                   // break;
+                // break;
                 default:
                     return Movement.No_movement;
-                  //  break;
+                    //  break;
 
             }
         }
@@ -236,17 +236,17 @@ namespace better_game_dev_project
     }
     class Enemy : Character //contains a single protected member variable that is used internally by subclasses
     {
-       public Random random = new Random();
-         public void Constructor_Enermy(int x, int y, int attack, int HP)
-         {
-            this.Constructor_Character(x, y,attack,HP);
-         }
+        public Random random = new Random();
+        public void Constructor_Enermy(int x, int y, int attack, int HP)
+        {
+            this.Constructor_Character(x, y, attack, HP);
+        }
 
         public string _Tostring(string name, int x, int y, int damage) //not the "tostring override" thing wanted but it should work
         {
             return name + " at [" + x + ", " + y + "] (" + damage + ")";
         }
-        
+
     }
 
     class Goblin : Enemy
@@ -255,7 +255,7 @@ namespace better_game_dev_project
         {
             this.Constructor_Enermy(x, y, 1, 10);
         }
-        
+
         public Movement ReturnMove(Movement move = 0)
         {
             var v = Enum.GetValues(typeof(Movement));
@@ -266,18 +266,18 @@ namespace better_game_dev_project
     {
         public void Constructor_Hero(int x, int y, int HP)
         {
-            this.Constructor_Character(x,y,2,HP);
+            this.Constructor_Character(x, y, 2, HP);
         }
         public Movement ReturnMove(char key)
         {
-            
+
             switch (key)
             {
                 case ' ':
                     return Movement.No_movement;
                 //break;
                 case 'w':
-                    
+
                     if (this.Tile[1] != "X")
                     {
                         return Movement.Up;
@@ -316,7 +316,7 @@ namespace better_game_dev_project
             }
         }
 
-        public string _Tostring(string name, int x, int y, int damage,int HP,int Max_HP) //not the "tostring override" thing wanted but it should work
+        public string _Tostring(string name, int x, int y, int damage, int HP, int Max_HP) //not the "tostring override" thing wanted but it should work
         {
             return "Player stats " + "\n" + "HP: " + HP + "/" + Max_HP + "\n" + "Damage: " + damage + "\n" + "[" + x + ", " + y + "]";
         }
@@ -335,7 +335,7 @@ namespace better_game_dev_project
         Hero _hero = new Hero();
         Enemy _enemy = new Enemy();
 
-        
+
         public void Map_constructor(int _min_width, int _max_width, int _min_height, int _max_height, int _enermy_amount)
         {
             _x_max = random.Next(_min_width, _max_width);
@@ -348,7 +348,7 @@ namespace better_game_dev_project
                 int _X, _Y;
                 _X = random.Next(_x_max - 1);
                 _Y = random.Next(_y_max - 1);
-              _enemy.Constructor_Enermy(_X, _Y, 5, 10); // I could add checks so they don't end up on the same space... buuut I couldn't be bothered currently :/
+                _enemy.Constructor_Enermy(_X, _Y, 5, 10); // I could add checks so they don't end up on the same space... buuut I couldn't be bothered currently :/
                 enermy_array[i] = _enemy;
                 Tile[_X, _Y] = 'G';
             }
@@ -385,29 +385,29 @@ namespace better_game_dev_project
 
         }
 
-       private void UpdateVision()
+        public void UpdateVision()
         {
-            int _X,_Y;
+            int _X, _Y;
             _X = _hero.Get_x();
             _Y = _hero.Get_y();
-            
-            _hero.Tile[1] = Convert.ToString(Tile[_X +1 , _Y]);
-            _hero.Tile[2] = Convert.ToString(Tile[_X -1, _Y]);
-            _hero.Tile[3] = Convert.ToString(Tile[_X, _Y +1]);
-            _hero.Tile[4] = Convert.ToString(Tile[_X, _Y -1]);
+
+            _hero.Tile[1] = Convert.ToString(Tile[_X + 1, _Y]);
+            _hero.Tile[2] = Convert.ToString(Tile[_X - 1, _Y]);
+            _hero.Tile[3] = Convert.ToString(Tile[_X, _Y + 1]);
+            _hero.Tile[4] = Convert.ToString(Tile[_X, _Y - 1]);
 
             for (int i = 0; i < enermy_array.Length; i++)
             {
-               /* int _X, _Y;
-                _X = random.Next(_x_max - 1);
-                _Y = random.Next(_y_max - 1);
-                _enemy.Constructor_Enermy(_X, _Y, 5, 10); // I could add checks so they don't end up on the same space... buuut I couldn't be bothered currently :/
-                enermy_array[i] = _enemy;
-                Tile[_X, _Y] = 'G';*/
-               enermy_array[i].Tile[1] = Convert.ToString(Tile[_X + 1, _Y]);
-               enermy_array[i].Tile[2] = Convert.ToString(Tile[_X - 1, _Y]);
-               enermy_array[i].Tile[3] = Convert.ToString(Tile[_X, _Y + 1]);
-               enermy_array[i].Tile[4] = Convert.ToString(Tile[_X, _Y - 1]);
+                /* int _X, _Y;
+                 _X = random.Next(_x_max - 1);
+                 _Y = random.Next(_y_max - 1);
+                 _enemy.Constructor_Enermy(_X, _Y, 5, 10); // I could add checks so they don't end up on the same space... buuut I couldn't be bothered currently :/
+                 enermy_array[i] = _enemy;
+                 Tile[_X, _Y] = 'G';*/
+                enermy_array[i].Tile[1] = Convert.ToString(Tile[_X + 1, _Y]);
+                enermy_array[i].Tile[2] = Convert.ToString(Tile[_X - 1, _Y]);
+                enermy_array[i].Tile[3] = Convert.ToString(Tile[_X, _Y + 1]);
+                enermy_array[i].Tile[4] = Convert.ToString(Tile[_X, _Y - 1]);
 
             }
 
@@ -416,8 +416,8 @@ namespace better_game_dev_project
 
 
     }
-
-
+    
+    
 
 
 }
