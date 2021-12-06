@@ -107,6 +107,35 @@ namespace better_game_dev_project
                 HP = HP - damage;
             }
         }
+        public bool IsDead()
+        {
+            if (HP == 0)
+                return true;
+            else
+                return false;
+        }
+        public virtual bool CheckRange(string target, int x, int y)
+        {
+            if (this.name == target)
+            {
+               if ((this.Get_x() - x) < 2)
+                {
+                    if (this.Get_y() - y < 2)
+                    { return true; }
+                    else
+                    { return false; }
+                }
+               else
+                {
+                    return false;
+                }
+            }
+            else
+            {
+                return false;
+                // if this triggers it would be an error but it wants so kind of return so I guess if it fails to find a target it will just say false
+            }
+        }
 
     }
     class Enemy : Character //contains a single protected member variable that is used internally by subclasses
