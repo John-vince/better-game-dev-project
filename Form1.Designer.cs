@@ -36,9 +36,11 @@
             this.richTextBox_map.Font = new System.Drawing.Font("Calibri", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.richTextBox_map.Location = new System.Drawing.Point(285, 13);
             this.richTextBox_map.Name = "richTextBox_map";
+            this.richTextBox_map.ReadOnly = true;
             this.richTextBox_map.Size = new System.Drawing.Size(284, 425);
             this.richTextBox_map.TabIndex = 0;
             this.richTextBox_map.Text = "";
+            this.richTextBox_map.Visible = false;
             // 
             // Form1
             // 
@@ -49,6 +51,7 @@
             this.Name = "Form1";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
+            this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Form1_KeyPress);
             this.ResumeLayout(false);
 
         }
